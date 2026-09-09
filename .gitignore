@@ -1,0 +1,20 @@
+# Compiled binaries.
+bin/
+dist/
+
+# Local end-to-end run artifacts.
+test/e2e/runs/
+
+# Benchmark scratch (per-run transcripts and caches).
+_glm52_bench/
+
+# Local environment: secrets live here, never in git.
+.env
+
+# Go workspace files.
+go.work
+go.work.sum
+
+# stray single-package build artifact (go build ./test/mockcli)
+/mockcli
+/mockcli.exe
