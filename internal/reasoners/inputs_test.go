@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/prompts"
+	"github.com/strich/assay/internal/prompts"
 )
 
 // Contract: OrderedPatches decodes a JSON object preserving document key order

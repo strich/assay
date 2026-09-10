@@ -1,6 +1,6 @@
 package prompts
 
-import "github.com/BrightrockGames/assay/internal/schemas"
+import "github.com/strich/assay/internal/schemas"
 
 // Go mirrors of the fixture inputs in scripts/gen_golden.py. The Go builders are
 // driven with these and compared against the committed testdata/*.txt fixtures

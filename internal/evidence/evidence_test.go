@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func writeFile(t *testing.T, repo, rel, content string) {

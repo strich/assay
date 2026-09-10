@@ -1,4 +1,4 @@
-module github.com/BrightrockGames/assay
+module github.com/strich/assay
 
 go 1.21
 

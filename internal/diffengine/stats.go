@@ -3,7 +3,7 @@ package diffengine
 import (
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // testPatterns ports the Python _is_test_file patterns. Membership is a

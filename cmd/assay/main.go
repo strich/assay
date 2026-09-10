@@ -27,14 +27,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/budget"
-	"github.com/BrightrockGames/assay/internal/capability"
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/github"
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/ndjson"
-	"github.com/BrightrockGames/assay/internal/orch"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/budget"
+	"github.com/strich/assay/internal/capability"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/github"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/ndjson"
+	"github.com/strich/assay/internal/orch"
+	"github.com/strich/assay/internal/schemas"
 )
 
 const version = "0.1.0"

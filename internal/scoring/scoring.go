@@ -26,8 +26,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // pyRound reproduces Python's built-in round(x, digits): round-half-to-even

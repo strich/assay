@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // The reasoners must WRITE .pr-af-context files whose content is byte-identical

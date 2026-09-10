@@ -3,8 +3,8 @@ package reasoners
 import (
 	"reflect"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // This file wires every destination type used with harnessx.Run[T] to its

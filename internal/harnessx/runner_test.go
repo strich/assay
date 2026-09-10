@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/budget"
+	"github.com/strich/assay/internal/budget"
 )
 
 // fakeExec scripts the subprocess seam. It parses the prompt (argv or stdin)

@@ -23,7 +23,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // hunkRe mirrors the Python regex `@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@(.*)`

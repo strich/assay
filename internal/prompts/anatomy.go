@@ -1,6 +1,6 @@
 package prompts
 
-import "github.com/BrightrockGames/assay/internal/schemas"
+import "github.com/strich/assay/internal/schemas"
 
 // Ports the anatomy_phase .harness() prompt from reasoners/harnesses.py.
 

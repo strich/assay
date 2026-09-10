@@ -3,9 +3,9 @@ package reasoners
 import (
 	"context"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // CoverageGate ports coverage_gate: one .ai() call that decides whether the

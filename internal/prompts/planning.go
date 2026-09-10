@@ -1,6 +1,6 @@
 package prompts
 
-import "github.com/BrightrockGames/assay/internal/schemas"
+import "github.com/strich/assay/internal/schemas"
 
 // Ports the planning_phase .harness() prompt from reasoners/harnesses.py.
 // (Registered but dead on the live path; ported for completeness.)

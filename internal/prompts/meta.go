@@ -3,7 +3,7 @@ package prompts
 import (
 	"unicode/utf8"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Ports the three meta-dimension selectors (meta_semantic / meta_mechanical /

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"unicode/utf8"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/prompts"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/prompts"
 )
 
 // ExtractObligations ports extract_obligations: enumerate the cross-location

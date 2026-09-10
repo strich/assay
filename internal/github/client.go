@@ -49,7 +49,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 const defaultBaseURL = "https://api.github.com"

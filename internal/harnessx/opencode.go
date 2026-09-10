@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/budget"
+	"github.com/strich/assay/internal/budget"
 )
 
 // This file parses opencode's `--format json` event stream. opencode emits one

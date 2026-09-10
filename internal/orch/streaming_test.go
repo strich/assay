@@ -13,9 +13,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/reasoners"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/reasoners"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func TestStreamingLayerConsumesWhileReviewersRun(t *testing.T) {

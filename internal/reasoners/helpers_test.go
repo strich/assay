@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Golden values in this file were captured from the real Python helpers:

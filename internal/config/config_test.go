@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // configEnvKeys is every env var this package reads. clearConfigEnv unsets them

@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
+	"github.com/strich/assay/internal/harnessx"
 )
 
 // Deps carries the single injectable capability a reasoner uses: the LLM seam.

@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // badInputError wraps ErrBadInput (for errors.Is classification → HTTP 400) but

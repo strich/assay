@@ -3,7 +3,7 @@ package config
 import (
 	"sort"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // ModelConfig ports config.py ModelConfig — model routing per agent. Budget

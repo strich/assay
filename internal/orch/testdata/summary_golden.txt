@@ -82,7 +82,7 @@ Review ID: `rev_abc123def456`
 
 <br>
 <div align="right">
-  <a href="https://github.com/BrightrockGames/assay">
+  <a href="https://github.com/strich/assay">
     <img src="https://img.shields.io/badge/Powered_by-assay-6366f1?style=flat-square&logo=github" alt="assay"/>
   </a>
 </div>

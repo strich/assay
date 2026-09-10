@@ -18,9 +18,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/github"
-	"github.com/BrightrockGames/assay/internal/schemas"
-	"github.com/BrightrockGames/assay/internal/scoring"
+	"github.com/strich/assay/internal/github"
+	"github.com/strich/assay/internal/schemas"
+	"github.com/strich/assay/internal/scoring"
 )
 
 // severityRank ports the comment-eligibility rank map.
@@ -425,7 +425,7 @@ func (o *Orchestrator) formatSummary(
 		"",
 		"<br>",
 		`<div align="right">`,
-		`  <a href="https://github.com/BrightrockGames/assay">`,
+		`  <a href="https://github.com/strich/assay">`,
 		`    <img src="https://img.shields.io/badge/Powered_by-assay-6366f1?style=flat-square&logo=github" alt="assay"/>`,
 		"  </a>",
 		"</div>",

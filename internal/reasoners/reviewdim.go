@@ -7,8 +7,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/prompts"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/prompts"
 )
 
 // ReviewDimension ports review_dimension: one focused reviewer over an

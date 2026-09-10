@@ -3,7 +3,7 @@ package prompts
 import (
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func TestAnatomyGolden(t *testing.T) {

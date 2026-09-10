@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/budget"
+	"github.com/strich/assay/internal/budget"
 )
 
 // Caller is the one method every reasoner needs. Runner implements it; tests

@@ -3,7 +3,7 @@ package reasoners
 import (
 	"encoding/json"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // This file ports the private harness-result models declared at module level in

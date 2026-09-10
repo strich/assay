@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/config"
+	"github.com/strich/assay/internal/config"
 )
 
 func TestParseFlagsAndValidate(t *testing.T) {

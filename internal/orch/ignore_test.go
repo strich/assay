@@ -3,8 +3,8 @@ package orch
 import (
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func TestMatchGlob(t *testing.T) {

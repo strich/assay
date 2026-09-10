@@ -4,8 +4,8 @@ import (
 	"context"
 	"unicode/utf8"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/prompts"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/prompts"
 )
 
 // EvidenceVerifier ports evidence_verifier: independent verification of

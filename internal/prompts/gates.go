@@ -3,7 +3,7 @@ package prompts
 import (
 	"strconv"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Ports the merge-gate prompt (merge_gate.py), the polish prompt (polish.py),

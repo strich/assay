@@ -4,8 +4,8 @@ package orch
 // truncate to max_comments.
 
 import (
-	"github.com/BrightrockGames/assay/internal/schemas"
-	"github.com/BrightrockGames/assay/internal/scoring"
+	"github.com/strich/assay/internal/schemas"
+	"github.com/strich/assay/internal/scoring"
 )
 
 func (o *Orchestrator) synthesize(

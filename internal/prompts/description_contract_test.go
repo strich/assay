@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func promptJSON(t *testing.T, prompt string) map[string]any {

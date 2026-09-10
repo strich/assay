@@ -21,12 +21,12 @@ import (
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/semaphore"
 
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/diffengine"
-	"github.com/BrightrockGames/assay/internal/evidence"
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/reasoners"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/diffengine"
+	"github.com/strich/assay/internal/evidence"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/reasoners"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // ---- Phase 1: INTAKE ----

@@ -18,7 +18,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 	"github.com/golang-jwt/jwt/v5"
 )
 

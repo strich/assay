@@ -3,11 +3,11 @@ package reasoners
 import (
 	"context"
 
-	"github.com/BrightrockGames/assay/internal/blastradius"
-	"github.com/BrightrockGames/assay/internal/diffengine"
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/blastradius"
+	"github.com/strich/assay/internal/diffengine"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // AnatomyPhase ports anatomy_phase: deterministic diff decomposition (parse,

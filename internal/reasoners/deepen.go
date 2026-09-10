@@ -4,8 +4,8 @@ import (
 	"context"
 	"unicode/utf8"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/prompts"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/prompts"
 )
 
 // DeepenFindings ports deepen_findings (registered but DEAD on the live path):

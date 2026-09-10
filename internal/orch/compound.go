@@ -19,9 +19,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/BrightrockGames/assay/internal/evidence"
-	"github.com/BrightrockGames/assay/internal/reasoners"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/evidence"
+	"github.com/strich/assay/internal/reasoners"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // runCompoundAnalysis ports _run_compound_analysis. Uses return_exceptions=True

@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // fakeLLM is a placeholder seam for tests that stub the reasoner functions

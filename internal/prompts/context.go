@@ -3,7 +3,7 @@ package prompts
 import (
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Shared context-payload helpers. These mirror the small dict/list constructions

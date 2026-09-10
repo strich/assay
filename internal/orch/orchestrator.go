@@ -22,14 +22,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/budget"
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/github"
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/ndjson"
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/reasoners"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/budget"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/github"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/ndjson"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/reasoners"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // ErrBadInput is the sentinel wrapping every ValueError-class failure Python's

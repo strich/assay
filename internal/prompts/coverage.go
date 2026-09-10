@@ -1,6 +1,6 @@
 package prompts
 
-import "github.com/BrightrockGames/assay/internal/schemas"
+import "github.com/strich/assay/internal/schemas"
 
 // Ports the coverage_gate .ai() system + user prompt from
 // reasoners/harnesses.py.

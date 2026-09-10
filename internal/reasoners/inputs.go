@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // This file declares the typed inputs for each reasoner (design §C.6 "typed

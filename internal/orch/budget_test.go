@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/budget"
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/budget"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func TestWallClockBudgetTrips(t *testing.T) {

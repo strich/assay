@@ -38,7 +38,7 @@ import (
 
 	"golang.org/x/sync/semaphore"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // EvidencePackage ports the pydantic EvidencePackage: ground-truth code

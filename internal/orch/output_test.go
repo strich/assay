@@ -15,9 +15,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/BrightrockGames/assay/internal/config"
-	"github.com/BrightrockGames/assay/internal/github"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/config"
+	"github.com/strich/assay/internal/github"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func fixedClockOrch(t *testing.T) *Orchestrator {

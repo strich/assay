@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Ports post_worthiness_gate's prompt from reasoners/harnesses.py. The caller

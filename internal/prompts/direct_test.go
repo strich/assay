@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 func TestMergeGateGolden(t *testing.T) {

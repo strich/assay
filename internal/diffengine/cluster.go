@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // ClusterChanges ports cluster_changes: group files by their directory (the

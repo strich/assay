@@ -3,7 +3,7 @@ package prompts
 import (
 	"unicode/utf8"
 
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Ports adversary_phase from reasoners/harnesses.py.

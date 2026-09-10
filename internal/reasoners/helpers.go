@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/BrightrockGames/assay/internal/prompts"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/prompts"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // This file ports the deterministic (non-LLM) helpers from

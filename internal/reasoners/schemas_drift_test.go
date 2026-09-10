@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/BrightrockGames/assay/internal/harnessx"
-	"github.com/BrightrockGames/assay/internal/schemas"
+	"github.com/strich/assay/internal/harnessx"
+	"github.com/strich/assay/internal/schemas"
 )
 
 // Drift guard for the committed pydantic schema fixtures. Every destination type
