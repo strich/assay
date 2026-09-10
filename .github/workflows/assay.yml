@@ -29,7 +29,6 @@ jobs:
       # for it. A PAT works the same way.
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      ASSAY_WORKDIR: ${{ runner.temp }}/assay-work
       ASSAY_MAX_COST_USD: "2.0"
       ASSAY_MAX_DURATION_SECONDS: "3600"
     steps:
@@ -46,4 +45,6 @@ jobs:
       - name: Review the pull request
         env:
           PR_URL: ${{ github.event.pull_request.html_url || inputs.pr_url }}
+          # runner.temp is only in scope at step level, not job-level env.
+          ASSAY_WORKDIR: ${{ runner.temp }}/assay-work
         run: ./bin/assay --pr "$PR_URL"
