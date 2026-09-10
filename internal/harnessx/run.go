@@ -536,7 +536,16 @@ func (r *Runner) logf(format string, args ...any) {
 func (r *Runner) outputDir(cwd string) (string, func(), error) {
 	base := cwd
 	if base == "" {
-		base = os.TempDir()
+		// With no --dir the child runs in the process working directory, so
+		// that is the agent's workspace. A temp dir under os.TempDir() would
+		// be outside it, and opencode's external_directory permission
+		// defaults to "ask" — which a headless run can never answer, so the
+		// Write tool silently never lands the structured output.
+		wd, err := os.Getwd()
+		if err != nil {
+			wd = os.TempDir()
+		}
+		base = wd
 	} else {
 		base = filepath.Clean(base)
 	}
