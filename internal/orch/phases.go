@@ -708,11 +708,19 @@ func (o *Orchestrator) runReviewLayer(
 
 	evidenceMap := map[string]evidence.EvidencePackage{}
 	if len(allFindings) > 0 && strp(o.input.RepoPath) != "" {
+		// This step can be the longest silent stretch in the pipeline on large
+		// repositories: it is filesystem-bound with no LLM calls. Emit phase
+		// progress so a stalled extraction is visible instead of inferred from
+		// a gap in the event stream.
+		o.progress("phase_start", map[string]any{"phase": "evidence_extract", "findings": len(allFindings)})
+		started := time.Now()
 		em, err := evidence.ExtractEvidenceForFindings(ctx, allFindings, strp(o.input.RepoPath), o.filePatchesMap(), o.blastRadius())
 		if err != nil {
 			return nil, nil, err
 		}
 		evidenceMap = em
+		o.progress("phase_end", map[string]any{"phase": "evidence_extract", "duration_ms": time.Since(started).Milliseconds(),
+			"evidence": len(em)})
 	}
 
 	verificationMap := map[string]map[string]any{}

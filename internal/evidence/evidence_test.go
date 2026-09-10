@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"sort"
 	"strconv"
+	"strings"
 	"sync/atomic"
 	"testing"
 	"time"
@@ -475,6 +476,47 @@ func TestExtractEvidenceTitleCollisionLastWins(t *testing.T) {
 	}
 	if res["dup"].PrimaryCode != "second" {
 		t.Fatalf("collision resolved to %q, want last (%q)", res["dup"].PrimaryCode, "second")
+	}
+}
+
+// A grep that times out or is cancelled must NOT trigger the filesystem
+// fallback: the fallback is for a missing grep binary only. Returning
+// available=true with empty output mirrors Python's TimeoutExpired -> [].
+func TestRunGrepCancelledContextReportsAvailable(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	stdout, available := runGrep(ctx, t.TempDir(), []string{"-RInE", "x", "."})
+	if !available {
+		t.Error("available = false for a cancelled grep, want true (no fallback)")
+	}
+	if stdout != "" {
+		t.Errorf("stdout = %q, want empty", stdout)
+	}
+}
+
+func TestFallbackFunctionGrepSkipsBinaryAndHonoursContext(t *testing.T) {
+	dir := t.TempDir()
+	writeFile(t, dir, "a.cs", "void Foo() {}\n")
+	writeFile(t, dir, "b.bin", "void Foo() {}\x00tail\n")
+	// Match beyond the first KiB: large text files must still be searched
+	// (no extension or size filtering).
+	writeFile(t, dir, "big.prefab", strings.Repeat("<!-- filler -->\n", 200)+"void Foo() {}\n")
+
+	got := fallbackFunctionGrep(context.Background(), dir, `\bFoo\s*\(`)
+	if !strings.Contains(got, "a.cs") {
+		t.Errorf("text match missing from %q", got)
+	}
+	if strings.Contains(got, "b.bin") {
+		t.Errorf("binary file matched, want skipped (grep -I parity): %q", got)
+	}
+	if !strings.Contains(got, "big.prefab") {
+		t.Errorf("large text file skipped, want searched: %q", got)
+	}
+
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	if got := fallbackFunctionGrep(ctx, dir, `\bFoo\s*\(`); got != "" {
+		t.Errorf("cancelled context returned %q, want empty", got)
 	}
 }
 

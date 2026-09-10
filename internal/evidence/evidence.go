@@ -20,6 +20,7 @@
 package evidence
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"errors"
@@ -272,7 +273,7 @@ func findFunctionCallers(ctx context.Context, repoPath, functionName, excludeFil
 	args := append([]string{"-RInE", pattern, "."}, skipDirGrepArgs...)
 	stdout, ran := runGrep(ctx, repoPath, args)
 	if !ran {
-		stdout = fallbackFunctionGrep(repoPath, pattern)
+		stdout = fallbackFunctionGrep(ctx, repoPath, pattern)
 	}
 
 	normalizedExclude := normalizeRelativePath(repoPath, excludeFile)
@@ -446,7 +447,7 @@ func buildImportContext(ctx context.Context, repoPath, filePath string) string {
 		args := append([]string{"-RIlE", regex, ".", "--include=*.py"}, skipDirGrepArgs...)
 		stdout, ran := runGrep(ctx, repoPath, args)
 		if !ran {
-			stdout = fallbackImportGrep(repoPath, regex)
+			stdout = fallbackImportGrep(ctx, repoPath, regex)
 		}
 		{
 			for _, rawPath := range splitLines(stdout) {
@@ -771,9 +772,13 @@ func isFile(path string) bool {
 }
 
 // runGrep shells out to `grep` with cwd=repoPath and a 10s timeout, returning
-// stdout and whether the process actually ran (ran=false reproduces Python
-// catching OSError / TimeoutExpired -> []). Any exit code (0/1/2) counts as ran
-// since Python uses check=False and only reads stdout.
+// stdout and whether grep was AVAILABLE (not whether it matched). A grep that
+// timed out or was cancelled returns empty output with available=true:
+// Python's original catches TimeoutExpired and yields [] WITHOUT consulting
+// the fallback. Only a failure to start (exec.Error, grep not installed)
+// reports available=false so callers may use the filesystem fallback. Any exit
+// code (0/1/2) counts as available since Python uses check=False and only
+// reads stdout.
 func runGrep(ctx context.Context, repoPath string, args []string) (string, bool) {
 	cctx, cancel := context.WithTimeout(ctx, grepTimeout)
 	defer cancel()
@@ -785,7 +790,11 @@ func runGrep(ctx context.Context, repoPath string, args []string) (string, bool)
 	err := cmd.Run()
 
 	if cctx.Err() != nil {
-		return "", false // timeout or cancellation
+		// Timeout or cancellation: grep exists, it just produced nothing
+		// usable. Do NOT fall back — a whole-tree scan here is unbounded work
+		// on large repositories (it ignores the caller's deadline) and is what
+		// Python's TimeoutExpired -> [] deliberately avoids.
+		return "", true
 	}
 	var execErr *exec.Error
 	if errors.As(err, &execErr) {
@@ -796,34 +805,64 @@ func runGrep(ctx context.Context, repoPath string, args []string) (string, bool)
 
 // The production implementation follows Python by using grep when available.
 // Windows development environments commonly lack it, so retain equivalent
-// caller/import discovery with a small filesystem fallback.
-func fallbackFunctionGrep(repoPath, pattern string) string {
+// caller/import discovery with a small filesystem fallback. The fallback
+// mirrors grep -I (binary files are skipped, detected by a NUL byte in the
+// first KiB) and streams files line by line, so large text files — templated
+// code, prefabs, generated config — are searched without being read whole.
+func fallbackFunctionGrep(ctx context.Context, repoPath, pattern string) string {
 	re, err := regexp.Compile(pattern)
 	if err != nil {
 		return ""
 	}
 	var matches []string
-	forEachRepoFile(repoPath, func(rel, abs string) {
-		data, err := os.ReadFile(abs)
+	forEachRepoFile(ctx, repoPath, func(rel, abs string) {
+		if looksBinary(abs) {
+			return
+		}
+		f, err := os.Open(abs)
 		if err != nil {
 			return
 		}
-		for lineNo, line := range splitLines(string(data)) {
-			if re.MatchString(line) {
-				matches = append(matches, rel+":"+strconv.Itoa(lineNo+1)+":"+line)
+		reader := bufio.NewReader(f)
+		for lineNo := 1; ; lineNo++ {
+			line, readErr := reader.ReadString('\n')
+			if line != "" {
+				trimmed := strings.TrimRight(line, "\r\n")
+				if re.MatchString(trimmed) {
+					matches = append(matches, rel+":"+strconv.Itoa(lineNo)+":"+trimmed)
+				}
+			}
+			if readErr != nil {
+				break
 			}
 		}
+		_ = f.Close()
 	})
 	return strings.Join(matches, "\n")
 }
 
-func fallbackImportGrep(repoPath, pattern string) string {
+// looksBinary sniffs the first KiB of a file for a NUL byte, the same
+// heuristic grep -I uses to decide a file is binary. Extension-based checks
+// are deliberately avoided: .prefab/.xml/templated sources are text and must
+// stay searchable.
+func looksBinary(path string) bool {
+	f, err := os.Open(path)
+	if err != nil {
+		return true
+	}
+	defer f.Close()
+	sample := make([]byte, 1024)
+	n, _ := f.Read(sample)
+	return bytes.Contains(sample[:n], []byte{0})
+}
+
+func fallbackImportGrep(ctx context.Context, repoPath, pattern string) string {
 	re, err := regexp.Compile(pattern)
 	if err != nil {
 		return ""
 	}
 	var matches []string
-	forEachRepoFile(repoPath, func(rel, abs string) {
+	forEachRepoFile(ctx, repoPath, func(rel, abs string) {
 		if !strings.HasSuffix(rel, ".py") {
 			return
 		}
@@ -835,8 +874,14 @@ func fallbackImportGrep(repoPath, pattern string) string {
 	return strings.Join(matches, "\n")
 }
 
-func forEachRepoFile(repoPath string, visit func(rel, abs string)) {
+// forEachRepoFile walks repoPath skipping only the directories grep skips, and
+// stops as soon as ctx is cancelled so a fallback scan cannot outlive the
+// caller's budget.
+func forEachRepoFile(ctx context.Context, repoPath string, visit func(rel, abs string)) {
 	_ = filepath.WalkDir(repoPath, func(abs string, d os.DirEntry, err error) error {
+		if ctx.Err() != nil {
+			return filepath.SkipAll
+		}
 		if err != nil || d == nil {
 			return nil
 		}
